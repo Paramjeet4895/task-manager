@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "TASK-MANAGER",
+        "description": "",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+   "paths": {
+    "/registerUser": {
+        "post": {
+            "x-swagger-router-controller": "users",
+            "operationId": "index",
+            "tags": [
+                "/users"
+            ],
+            "description": "register new user",
+            "parameters": [
+                {
+                    "name": "User",
+                    "in": "body",
+                    "description": "register user",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "String",
+                                "required": true,
+                                "trim": true
+                            },
+                            "email": {
+                                "type": "String",
+                                "unique": true,
+                                "required": true,
+                                "trim": true,
+                                "lowercase": true
+                            },
+                            "password": {
+                                "type": "String",
+                                "required": true,
+                                "minlength": 7,
+                                "trim": true
+                            },
+                            "age": {
+                                "type": "Number",
+                                "default": 0
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {}
+        }
+    },
+    "/users": {
+        "get": {
+            "x-swagger-router-controller": "users",
+            "operationId": "impossible",
+            "tags": [
+                "/users"
+            ],
+            "description": "List of all registered users",
+            "parameters": [],
+            "responses": {}
+        }
+    }
+}
+}
